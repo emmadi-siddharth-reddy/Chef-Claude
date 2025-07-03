@@ -22,9 +22,19 @@ export function Main () {
     }
 
     function addIngredient(formData) {
-        const newIngredient = formData.get("ingredient")
-        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+        const newIngredient = formData.get("ingredient").trim();
+
+        // Regex to allow only letters and spaces (no numbers/symbols)
+        const isValid = /^[A-Za-z\s]+$/.test(newIngredient);
+
+        if (!newIngredient || !isValid) {
+            alert("Please enter a valid ingredient (letters only, no numbers or symbols).");
+            return;
+        }
+
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
     }
+
 
     return (
         <main>
