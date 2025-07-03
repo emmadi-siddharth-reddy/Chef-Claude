@@ -1,4 +1,4 @@
-import { React, useState } from "react"
+import { React, useEffect, useRef, useState } from "react"
 import { AIRecipe } from "./AIRecipe"
 import { IngredientsList } from "./IngredientsList"
 import { getRecipeFromMistral } from "./Ai"
@@ -9,6 +9,14 @@ export function Main () {
         ["all the main spices", "corn"]
     )
     const [recipe, setRecipe] = useState("")
+
+    const recipeSection = useRef(null)
+    
+    useEffect(() => {
+        if(recipe !== "" && recipeSection.current !== null) {
+            recipeSection.current.scrollIntoView({behavior: "smooth"})
+        }
+    },[recipe])
 
     async function getRecipe() {
         const recipeMarkdown = await getRecipeFromMistral(ingredients)
@@ -34,6 +42,7 @@ export function Main () {
 
             {ingredients.length > 0 &&
                 <IngredientsList
+                    ref={recipeSection}
                     ingredients={ingredients}
                     getRecipe={getRecipe}
                 />
