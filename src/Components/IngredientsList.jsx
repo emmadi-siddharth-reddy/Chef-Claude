@@ -3,8 +3,7 @@ export function IngredientsList(props) {
         <li key={ingredient}>{ingredient}</li>
     ))
     return (
-        <section>                        
-            <h2>Enter at Least 4 Ingredients</h2>
+        <section>
             <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
             {props.ingredients.length > 3 && <div className="get-recipe-container">
                 <div ref={props.ref}>

@@ -37,6 +37,7 @@ export function Main () {
                 />
                 <button>Add ingredient</button>
             </form>
+            <h2>Add Atleast 4 Ingredients</h2>
 
             {ingredients.length > 0 &&
                 <IngredientsList
