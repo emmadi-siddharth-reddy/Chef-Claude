@@ -35,6 +35,11 @@ export function Main () {
         setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
     }
 
+    function removeIngredient(indexToRemove) {
+        setIngredients(prev => prev.filter((_, index) => index !== indexToRemove));
+    }
+
+
 
     return (
         <main>
@@ -51,9 +56,10 @@ export function Main () {
 
             {ingredients.length > 0 &&
                 <IngredientsList
-                    ref={recipeSection}
+                    innerRef={recipeSection}
                     ingredients={ingredients}
                     getRecipe={getRecipe}
+                    removeIngredient={removeIngredient}
                 />
             }
 
