@@ -46,22 +46,21 @@ export function Main () {
             <form action={addIngredient} className="add-ingredient-form">
                 <input
                     type="text"
-                    placeholder="e.g. oregano"
+                    placeholder="Enter Ingredients you have one by one "
                     aria-label="Add ingredient"
                     name="ingredient"
                 />
-                <button>Add ingredient</button>
+                <button>Add Ingredient</button>
             </form>
-            <h2>Add Atleast 4 Ingredients</h2>
-
-            {ingredients.length > 0 &&
+            <h2>Add Ingredients</h2>
+            
                 <IngredientsList
                     innerRef={recipeSection}
                     ingredients={ingredients}
                     getRecipe={getRecipe}
                     removeIngredient={removeIngredient}
                 />
-            }
+            
 
             {recipe && <AIRecipe recipe={recipe} />}
         </main>
